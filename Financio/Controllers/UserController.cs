@@ -24,7 +24,8 @@ namespace Financio.Controllers
         }
 
         [HttpPost]
-        [Route("Create")]
+        [Route("")]
+        [Route("[action]")]
         public async Task<UserEntity> CreateUser([FromBody] UserEntity userEntity)
         {
             var validator = new UserEntityValidator();
@@ -35,6 +36,14 @@ namespace Financio.Controllers
                 return new UserEntity();
             }
             return userEntity;
+        }
+
+        [HttpPut]
+        [Route("")]
+        [Route("[action]")]
+        public async Task<UserEntity> UpdateUser([FromBody] UserEntity user)
+        {
+            return new UserEntity { Id = 1, UserName = "prakash.besra" };
         }
     }
 }

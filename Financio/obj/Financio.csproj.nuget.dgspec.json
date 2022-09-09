@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/home/prakash/projects/app/Financio/Financio/Financio.csproj": {}
+    "C:\\Users\\PBesra\\Documents\\projects\\Finanio\\Financio\\Financio.csproj": {}
   },
   "projects": {
-    "/home/prakash/projects/app/Financio/Financio/Financio.csproj": {
+    "C:\\Users\\PBesra\\Documents\\projects\\Finanio\\Financio\\Financio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/prakash/projects/app/Financio/Financio/Financio.csproj",
+        "projectUniqueName": "C:\\Users\\PBesra\\Documents\\projects\\Finanio\\Financio\\Financio.csproj",
         "projectName": "Financio",
-        "projectPath": "/home/prakash/projects/app/Financio/Financio/Financio.csproj",
-        "packagesPath": "/home/prakash/.nuget/packages/",
-        "outputPath": "/home/prakash/projects/app/Financio/Financio/obj/",
+        "projectPath": "C:\\Users\\PBesra\\Documents\\projects\\Finanio\\Financio\\Financio.csproj",
+        "packagesPath": "C:\\Users\\PBesra\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PBesra\\Documents\\projects\\Finanio\\Financio\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/prakash/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\PBesra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -66,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
