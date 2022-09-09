@@ -1,3 +1,5 @@
+using Financio.Domain.EntitiesValidator;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,7 +17,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UserValidationBehavior();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
