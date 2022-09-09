@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Domain.Entities;
 using Domain.Entities.EntitiesValidator;
+using System.ComponentModel.DataAnnotations;
+using Financio.Domain.Validator;
 
 namespace Financio.Controllers
 {
@@ -26,16 +28,16 @@ namespace Financio.Controllers
         [HttpPost]
         [Route("")]
         [Route("[action]")]
-        public async Task<UserEntity> CreateUser([FromBody] UserEntity userEntity)
+        public async Task<IActionResult> CreateUser([FromBody] UserEntity userEntity)
         {
             var validator = new UserEntityValidator();
             var valid = validator.Validate(userEntity);
-            if (valid.IsValid)
+            if (!valid.IsValid)
             {
-                Console.WriteLine(valid);
-                return new UserEntity();
+                var responseErrors = new ResponseErrors<UserEntity>(valid.Errors);
+                return BadRequest(responseErrors.GetErrors());
             }
-            return userEntity;
+            return Ok(userEntity);
         }
 
         [HttpPut]
