@@ -3,6 +3,9 @@ using Domain.Entities;
 using Domain.Entities.EntitiesValidator;
 using System.ComponentModel.DataAnnotations;
 using Financio.Domain.Validator;
+using Financio.Application.IServices;
+using AutoMapper;
+using System.Net.Mime;
 
 namespace Financio.Controllers
 {
@@ -10,21 +13,51 @@ namespace Financio.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        public UserController()
-        {
+        private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
+        public UserController(IUserService userService, IMapper mapper)
+        {
+            this._userService = userService;
+            this._mapper = mapper;
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<UserEntity> Index()
+        public async Task<IActionResult> Index()
         {
-            return new UserEntity
-            {
-                Id = 1,
-                UserName = "prakash.besra"
-            };
+            var userList = await _userService.GetAll();
+            var userEntities=_mapper.Map<List<UserEntity>>(userList);
+            return Ok(userEntities);
         }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> Index(int id)
+        {
+            var user = await _userService.GetByIdAsync(id);
+            var userEntity = _mapper.Map<UserEntity>(user);
+            if (userEntity == null)
+            {
+                return NotFound();
+            }
+            return Ok(userEntity);
+        }
+
+        [HttpGet]
+        [Route("Query")]
+        public async Task<IActionResult> Index([FromQuery(Name = "userName")] string userName)
+        {
+            var user = await _userService.GetByUserNameAsync(userName);
+            var userEntity = _mapper.Map<UserEntity>(user);
+            if(userEntity == null)
+            {
+                return NotFound();
+            }
+            return Ok(userEntity);
+        }
+
+
 
         [HttpPost]
         [Route("")]
@@ -37,6 +70,7 @@ namespace Financio.Controllers
                 var responseErrors = new ResponseErrors<UserEntity>(valid.Errors);
                 return BadRequest(responseErrors.GetErrors());
             }
+
             return Ok(userEntity);
         }
 
