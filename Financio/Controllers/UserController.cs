@@ -14,8 +14,9 @@ namespace Financio.Controllers
         {
 
         }
+
+        [HttpGet]
         [Route("")]
-        [Route("[action]")]
         public async Task<UserEntity> Index()
         {
             return new UserEntity
@@ -27,7 +28,6 @@ namespace Financio.Controllers
 
         [HttpPost]
         [Route("")]
-        [Route("[action]")]
         public async Task<IActionResult> CreateUser([FromBody] UserEntity userEntity)
         {
             var validator = new UserEntityValidator();
@@ -42,7 +42,6 @@ namespace Financio.Controllers
 
         [HttpPut]
         [Route("")]
-        [Route("[action]")]
         public async Task<UserEntity> UpdateUser([FromBody] UserEntity user)
         {
             return new UserEntity { Id = 1, UserName = "prakash.besra" };

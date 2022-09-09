@@ -18,8 +18,17 @@ namespace Domain.Entities.EntitiesValidator
                 .WithMessage("Email can not be empty.")
                 .EmailAddress()
                 .WithMessage("Invalid email address.");
-                
-            
+
+            RuleFor(x => x.DateOfBirth)
+                .NotEmpty()
+                .WithMessage("Date of birth can not be empty")
+                .Must(BeAValidDate)
+                .WithMessage("Invalid date of birth");
+        }
+        private bool BeAValidDate(DateTime? value)
+        {
+            DateTime date;
+            return DateTime.TryParse(Convert.ToString(value), out date);
         }
     }
 }

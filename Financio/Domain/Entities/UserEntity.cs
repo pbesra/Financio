@@ -8,8 +8,8 @@ namespace Domain.Entities
         public string? UserName { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public bool IsDisabled { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public bool? IsDisabled { get; set; }
     }
 }
